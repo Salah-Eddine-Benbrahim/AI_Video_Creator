@@ -8,10 +8,24 @@ Ce dépôt fournit deux ressources complémentaires pour créer du contenu visue
 ## Installation
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
+
+> 💡 **Besoin d’installer Python sur ChromeOS/Debian ?**
+> 
+> Si la commande `python3 -m venv` échoue (erreur « externally managed environment » ou `python: command not found`), installez
+> les paquets système suivants puis relancez les commandes ci-dessus :
+>
+> ```bash
+> sudo apt update
+> sudo apt install python3 python3-venv python3-pip
+> ```
+>
+> Ces paquets fournissent l’exécutable `python3`, la fonctionnalité de virtualenv (`python3-venv`) et `pip`. Une fois
+> l’environnement virtuel activé, utilisez toujours `python -m pip` (ou `python3 -m pip`) pour installer les dépendances afin
+> d’éviter les erreurs PEP 668 liées aux environnements gérés par le système.
 
 ## Génération d’image ou de vidéo
 
