@@ -1,0 +1,2 @@
+# The CLI relies solely on the Python standard library.
+# This file is intentionally left blank to prevent ``pip install -r`` errors.
