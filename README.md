@@ -1,15 +1,47 @@
 # AI_Video_Creator
 
-Ce dépôt contient un storyboard pour la création d'une vidéo lyrique de style manga / Gen-Z inspirée de la chanson « Paparazzi Manqué ».
+Ce dépôt fournit deux ressources complémentaires pour créer du contenu visuel à partir de prompts IA :
 
-## Contenu
+1. **Une application CLI** capable de générer une image ou une courte vidéo (slideshow) en interrogeant un service d’illustration IA.
+2. **Un storyboard lyrique** détaillant la mise en scène image par image de la chanson « Paparazzi Manqué ».
 
-- `storyboard.md` : description détaillée de chaque visuel (scène, texte, ambiance) à produire. Chaque image doit comporter une bulle manga manuscrite et un sous-titre simple en bas avec le même contenu.
+## Installation
 
-## Utilisation
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-1. Suivez le storyboard pour générer les illustrations au format 16:9.
-2. Intégrez les visuels dans votre logiciel de montage (CapCut, Premiere Rush, etc.).
-3. Ajoutez la piste audio de la chanson et synchronisez les textes affichés sur chaque visuel.
+## Génération d’image ou de vidéo
 
-Bonne création !
+L’application se lance via le module `app.cli` et contacte par défaut l’API publique de [pollinations.ai](https://pollinations.ai/) pour obtenir des illustrations.
+
+### Générer une image
+
+```bash
+python -m app.cli --prompt "portrait manga blonde" --mode image --output media/result.jpg
+```
+
+### Générer une vidéo (slideshow)
+
+```bash
+python -m app.cli \
+  --prompt "manga girl in neon city" \
+  --mode video \
+  --frame-count 8 \
+  --fps 4 \
+  --output media/result.mp4
+```
+
+Les vidéos sont construites à partir d’un ensemble d’images générées successivement puis assemblées avec `imageio`. Ajustez `--frame-count` et `--fps` pour contrôler la durée et le rythme.
+
+> ℹ️ **Astuce** : vous pouvez remplacer l’API par un autre fournisseur en implémentant `ImageProvider` dans `app/services/providers.py`.
+
+## Storyboard lyrique
+
+- `storyboard.md` : description détaillée de chaque visuel (scène, texte, ambiance) à produire pour la chanson « Paparazzi Manqué ». Chaque image doit comporter une bulle manga manuscrite et un sous-titre simple en bas avec le même contenu.
+
+Utilisez le storyboard comme guide artistique, puis servez-vous de l’application CLI pour prototyper rapidement des visuels ou un montage de base avant un travail de retouche avancée.
+
+Bonne création !
