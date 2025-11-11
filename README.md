@@ -13,6 +13,16 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
+> 🆕 **Alternative automatique**
+>
+> Pour éviter les erreurs de chemin comme `requirements.txt introuvable`, lancez le script fourni (depuis la racine du projet) :
+>
+> ```bash
+> ./scripts/setup_env.sh
+> ```
+>
+> Il détecte la racine du projet, crée l’environnement `.venv` si besoin, puis installe les dépendances via `python -m pip`.
+
 > 💡 **Besoin d’installer Python sur ChromeOS/Debian ?**
 > 
 > Si la commande `python3 -m venv` échoue (erreur « externally managed environment » ou `python: command not found`), installez
@@ -26,6 +36,15 @@ python -m pip install -r requirements.txt
 > Ces paquets fournissent l’exécutable `python3`, la fonctionnalité de virtualenv (`python3-venv`) et `pip`. Une fois
 > l’environnement virtuel activé, utilisez toujours `python -m pip` (ou `python3 -m pip`) pour installer les dépendances afin
 > d’éviter les erreurs PEP 668 liées aux environnements gérés par le système.
+>
+> **Astuce Chromebook** : vérifiez que vous êtes bien dans le dossier du projet avant d’installer :
+>
+> ```bash
+> cd ~/AI_Video_Creator
+> ls requirements.txt
+> ```
+>
+> Si la commande `ls` affiche bien `requirements.txt`, l’installation peut se faire sans erreur.
 
 ## Génération d’image ou de vidéo
 
