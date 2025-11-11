@@ -98,6 +98,8 @@ Les vidéos sont construites à partir d’un ensemble d’images générées su
 
 > ℹ️ **Astuce** : vous pouvez remplacer l’API par un autre fournisseur en implémentant `ImageProvider` dans `app/services/providers.py`.
 
+> ⚠️ **Erreur « Failed to encode video » ?** Assurez-vous que la dépendance Python `imageio-ffmpeg` est installée (elle est incluse dans `requirements.txt`) et que l’exécutable système `ffmpeg` est disponible (`ffmpeg -version`).
+
 ## Storyboard lyrique
 
 - `storyboard.md` : description détaillée de chaque visuel (scène, texte, ambiance) à produire pour la chanson « Paparazzi Manqué ». Chaque image doit comporter une bulle manga manuscrite et un sous-titre simple en bas avec le même contenu.

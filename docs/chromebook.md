@@ -119,5 +119,6 @@ Remplacez `result.jpg` par le nom du fichier souhaité.
 - **`requirements.txt introuvable`** : confirmez que vous êtes bien dans la racine du projet (`pwd` doit se terminer par `AI_Video_Creator`).
 - **Erreurs réseau lors de la génération** : pollinations.ai est un service public ; relancez la commande ou réessayez plus tard.
 - **Repartir sur une base propre** : exécutez `./scripts/clean_env.sh` pour supprimer `.venv` et les caches Python. Ajoutez `--purge-media` si vous souhaitez effacer les visuels générés dans `media/` avant de relancer `./scripts/setup_env.sh`.
+- **Erreur « Failed to encode video »** : vérifiez que `ffmpeg` est bien installé (`ffmpeg -version`) et que la bibliothèque Python `imageio-ffmpeg` a été installée via `python3 -m pip install -r requirements.txt` (réinstallez-la manuellement si nécessaire).
 
 En suivant ce guide, le projet est opérationnel sur Chromebook avec des commandes `python3` explicites à chaque étape.

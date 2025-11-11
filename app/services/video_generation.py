@@ -51,7 +51,14 @@ def generate_video(
         with imageio.get_writer(output_path, fps=fps, codec="libx264") as writer:
             for frame in frames:
                 writer.append_data(frame)
+    except ModuleNotFoundError as exc:  # pragma: no cover - environment specific
+        raise VideoGenerationError(
+            "Failed to encode video: missing imageio-ffmpeg dependency"
+        ) from exc
     except Exception as exc:  # pragma: no cover - thin wrapper
-        raise VideoGenerationError("Failed to encode video") from exc
+        error_message = "Failed to encode video"
+        if "ffmpeg" in str(exc).lower():
+            error_message += "; ensure ffmpeg is installed and accessible"
+        raise VideoGenerationError(error_message) from exc
 
     return output_path
