@@ -22,13 +22,15 @@ fi
 # shellcheck disable=SC1090
 source "${VENV_DIR}/bin/activate"
 
-python -m pip install --upgrade pip
+VENV_PYTHON="${VENV_DIR}/bin/python"
+
+"${VENV_PYTHON}" -m pip install --upgrade pip
 
 if [ ! -f "${PROJECT_ROOT}/requirements.txt" ]; then
   echo "Error: requirements.txt introuvable dans ${PROJECT_ROOT}." >&2
   exit 1
 fi
 
-python -m pip install -r "${PROJECT_ROOT}/requirements.txt"
+"${VENV_PYTHON}" -m pip install -r "${PROJECT_ROOT}/requirements.txt"
 
 echo "\n✅ Environnement virtuel prêt. Activez-le avec : source .venv/bin/activate"

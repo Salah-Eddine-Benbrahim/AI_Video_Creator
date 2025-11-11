@@ -10,7 +10,7 @@ Ce dépôt fournit deux ressources complémentaires pour créer du contenu visue
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 > 🆕 **Alternative automatique**
@@ -21,7 +21,7 @@ python -m pip install -r requirements.txt
 > ./scripts/setup_env.sh
 > ```
 >
-> Il détecte la racine du projet, crée l’environnement `.venv` si besoin, puis installe les dépendances via `python -m pip`.
+> Il détecte la racine du projet, crée l’environnement `.venv` si besoin, puis installe les dépendances via `python3 -m pip`.
 
 > 💡 **Besoin d’installer Python sur ChromeOS/Debian ?**
 > 
@@ -34,7 +34,7 @@ python -m pip install -r requirements.txt
 > ```
 >
 > Ces paquets fournissent l’exécutable `python3`, la fonctionnalité de virtualenv (`python3-venv`) et `pip`. Une fois
-> l’environnement virtuel activé, utilisez toujours `python -m pip` (ou `python3 -m pip`) pour installer les dépendances afin
+> l’environnement virtuel activé, utilisez toujours `python3 -m pip` (ou `python -m pip` si `python` pointe bien vers Python 3)
 > d’éviter les erreurs PEP 668 liées aux environnements gérés par le système.
 >
 > **Astuce Chromebook** : vérifiez que vous êtes bien dans le dossier du projet avant d’installer :
@@ -53,13 +53,13 @@ L’application se lance via le module `app.cli` et contacte par défaut l’API
 ### Générer une image
 
 ```bash
-python -m app.cli --prompt "portrait manga blonde" --mode image --output media/result.jpg
+python3 -m app.cli --prompt "portrait manga blonde" --mode image --output media/result.jpg
 ```
 
 ### Générer une vidéo (slideshow)
 
 ```bash
-python -m app.cli \
+python3 -m app.cli \
   --prompt "manga girl in neon city" \
   --mode video \
   --frame-count 8 \
