@@ -56,6 +56,20 @@ Le script efface le dossier `.venv` et les répertoires `__pycache__`. Ajoutez l
 >
 > Si la commande `ls` affiche bien `requirements.txt`, l’installation peut se faire sans erreur.
 >
+> 🔁 **Invite de commande avec `AI_Video_Creator/AI_Video_Creator` ?**
+>
+> Si votre terminal affiche `~/AI_Video_Creator/AI_Video_Creator$`, vous êtes dans un dossier dupliqué créé lors du clonage ou de la copie du projet. Revenez à la racine unique avec :
+>
+> ```bash
+> cd ~/AI_Video_Creator
+> ```
+>
+> Si un sous-dossier `AI_Video_Creator` vide demeure à l’intérieur de la racine, vous pouvez le supprimer pour éviter toute confusion :
+>
+> ```bash
+> rm -rf AI_Video_Creator
+> ```
+>
 > 📘 **Besoin d’un tutoriel détaillé Chromebook ?** Consultez [docs/chromebook.md](docs/chromebook.md) pour un guide pas-à-pas
 > incluant l’activation de Linux, les commandes `python3` exactes et la copie des médias vers ChromeOS.
 

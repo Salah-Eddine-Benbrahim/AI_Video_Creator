@@ -48,6 +48,22 @@ Assurez-vous que le fichier `requirements.txt` est présent :
 ls requirements.txt
 ```
 
+> 🔁 **Invite de commande affichant `AI_Video_Creator/AI_Video_Creator` ?**
+>
+> Vous êtes probablement entré dans un dossier dupliqué (par exemple après avoir extrait une archive). Revenez à la racine du projet avec :
+>
+> ```bash
+> cd ~/AI_Video_Creator
+> ```
+>
+> Si un sous-dossier `AI_Video_Creator` superflu reste à l’intérieur et qu’il ne contient rien de nécessaire, vous pouvez le supprimer pour éviter la confusion :
+>
+> ```bash
+> rm -rf AI_Video_Creator
+> ```
+>
+> La racine correcte doit contenir `README.md`, `app/`, `docs/`, `scripts/`, etc.
+
 ## 5. Créer et activer l'environnement virtuel
 Depuis la racine du projet :
 
