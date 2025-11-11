@@ -24,6 +24,25 @@ def _prompt_variants(prompt: str, count: int) -> Iterable[str]:
             yield f"{prompt}, cinematic frame {index + 1}"
 
 
+def _ensure_ffmpeg_available() -> None:
+    """Ensure the runtime has access to an ffmpeg executable."""
+
+    try:
+        import imageio_ffmpeg  # noqa: WPS433 - imported for runtime check only
+    except ModuleNotFoundError as exc:  # pragma: no cover - environment specific
+        raise VideoGenerationError(
+            "Failed to encode video: missing imageio-ffmpeg dependency",
+        ) from exc
+
+    try:
+        imageio_ffmpeg.get_ffmpeg_version()
+    except Exception as exc:  # pragma: no cover - environment specific
+        raise VideoGenerationError(
+            "Failed to encode video: ffmpeg executable not found. "
+            "Install ffmpeg (e.g. `sudo apt install ffmpeg`) and retry.",
+        ) from exc
+
+
 def generate_video(
     prompt: str,
     output_path: Path,
@@ -47,18 +66,23 @@ def generate_video(
             frame = image.convert("RGB")
             frames.append(np.array(frame))
 
+    _ensure_ffmpeg_available()
+
     try:
-        with imageio.get_writer(output_path, fps=fps, codec="libx264") as writer:
+        with imageio.get_writer(
+            output_path,
+            fps=fps,
+            codec="libx264",
+            ffmpeg_log_level="error",
+        ) as writer:
             for frame in frames:
                 writer.append_data(frame)
-    except ModuleNotFoundError as exc:  # pragma: no cover - environment specific
-        raise VideoGenerationError(
-            "Failed to encode video: missing imageio-ffmpeg dependency"
-        ) from exc
     except Exception as exc:  # pragma: no cover - thin wrapper
         error_message = "Failed to encode video"
-        if "ffmpeg" in str(exc).lower():
-            error_message += "; ensure ffmpeg is installed and accessible"
+        if "codec" in str(exc).lower():
+            error_message += ": requested codec not supported by ffmpeg"
+        elif "ffmpeg" in str(exc).lower():
+            error_message += ": ensure ffmpeg is installed and accessible"
         raise VideoGenerationError(error_message) from exc
 
     return output_path
