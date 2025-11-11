@@ -24,7 +24,7 @@ python3 -m pip install -r requirements.txt
 > Il détecte la racine du projet, crée l’environnement `.venv` si besoin, puis installe les dépendances via `python3 -m pip`.
 
 > 💡 **Besoin d’installer Python sur ChromeOS/Debian ?**
-> 
+>
 > Si la commande `python3 -m venv` échoue (erreur « externally managed environment » ou `python: command not found`), installez
 > les paquets système suivants puis relancez les commandes ci-dessus :
 >
@@ -45,6 +45,9 @@ python3 -m pip install -r requirements.txt
 > ```
 >
 > Si la commande `ls` affiche bien `requirements.txt`, l’installation peut se faire sans erreur.
+>
+> 📘 **Besoin d’un tutoriel détaillé Chromebook ?** Consultez [docs/chromebook.md](docs/chromebook.md) pour un guide pas-à-pas
+> incluant l’activation de Linux, les commandes `python3` exactes et la copie des médias vers ChromeOS.
 
 ## Génération d’image ou de vidéo
 
