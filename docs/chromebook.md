@@ -102,5 +102,6 @@ Remplacez `result.jpg` par le nom du fichier souhaité.
 - **Erreur « externally managed environment »** : assurez-vous d'exécuter `python3 -m pip` depuis l'environnement virtuel activé.
 - **`requirements.txt introuvable`** : confirmez que vous êtes bien dans la racine du projet (`pwd` doit se terminer par `AI_Video_Creator`).
 - **Erreurs réseau lors de la génération** : pollinations.ai est un service public ; relancez la commande ou réessayez plus tard.
+- **Repartir sur une base propre** : exécutez `./scripts/clean_env.sh` pour supprimer `.venv` et les caches Python. Ajoutez `--purge-media` si vous souhaitez effacer les visuels générés dans `media/` avant de relancer `./scripts/setup_env.sh`.
 
 En suivant ce guide, le projet est opérationnel sur Chromebook avec des commandes `python3` explicites à chaque étape.

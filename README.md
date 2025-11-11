@@ -23,6 +23,16 @@ python3 -m pip install -r requirements.txt
 >
 > Il détecte la racine du projet, crée l’environnement `.venv` si besoin, puis installe les dépendances via `python3 -m pip`.
 
+### Nettoyer ou repartir de zéro
+
+Pour supprimer un environnement virtuel endommagé ou repartir d’une installation propre :
+
+```bash
+./scripts/clean_env.sh
+```
+
+Le script efface le dossier `.venv` et les répertoires `__pycache__`. Ajoutez l’option `--purge-media` pour supprimer en plus les fichiers générés dans `media/`.
+
 > 💡 **Besoin d’installer Python sur ChromeOS/Debian ?**
 >
 > Si la commande `python3 -m venv` échoue (erreur « externally managed environment » ou `python: command not found`), installez
